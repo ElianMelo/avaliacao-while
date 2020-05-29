@@ -10,9 +10,11 @@ public class Programa {
 		Scanner sc = new Scanner(System.in);
 		
 		String nome;
-		int horas, menu;
-		double vlrHora;
+		int horas, menu, totalHoras;
+		double vlrHora, custoTotal;
 		char outro;
+		totalHoras = 0;
+		custoTotal = 0.0;
 		
 		do {
 			System.out.print("Nome: ");
@@ -21,10 +23,12 @@ public class Programa {
 				System.out.print("Horas trabalhadas: ");
 				horas = sc.nextInt();
 			} while (horas <= 0.0);
+			totalHoras += horas;
 			do {
 				System.out.print("Valor por hora: ");
 				vlrHora = sc.nextDouble();
 			} while (vlrHora <= 0.0);
+			custoTotal += horas * vlrHora;
 			System.out.print("Digitar outro (S/N)? ");
 			outro = sc.next().toUpperCase().charAt(0);
 		} while (outro != 'N');
@@ -39,6 +43,12 @@ public class Programa {
 			System.out.print("Digite uma opção: ");
 			menu = sc.nextInt();
 			System.out.println();
+			
+			if (menu == 1) {
+				System.out.println("Total de horas = " + totalHoras);
+			} else if (menu == 2) {
+				System.out.printf("Custo total = R$ %.2f%n", custoTotal);
+			}
 		} while (menu != 4);
 
 		
